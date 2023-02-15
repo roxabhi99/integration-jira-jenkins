@@ -30,7 +30,7 @@ GRANT ALL PRIVILEGES ON jira_db.* TO 'jira_user'@'localhost';
 FLUSH PRIVILEGES;
 EOF
 
-mysql < configure.sql
+sudo mysql < configure.sql
 
 #In The root user
 
