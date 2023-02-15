@@ -1,7 +1,7 @@
 ## ubuntu t2 medium instance
 
 #Install java-openjdk:
-sudo su -
+
 apt update -y
 apt-get install openjdk-11-jdk -y
 javac -version
@@ -19,19 +19,20 @@ mysqladmin -u root -p version
 mysql_secure_installation
 systemctl status mysql
 
-#Create DataBase & Install Jira Software:
+#Create DataBase :
 
 mysql -u root -p
 cat > configure.sql <<-EOF
 
 CREATE DATABASE jira_db;
-CREATE USER 'jira_user'@'localhost' IDENTIFIED BY 'Nitish@11';
-GRANT ALL PRIVILEGES ON jira_db.* TO 'jira_user'@'localhost';
+CREATE USER 'jira_user'@'<pulic-ip>' IDENTIFIED BY 'Nitish@11';
+GRANT ALL PRIVILEGES ON jira_db.* TO 'jira_user'@'<public-ip>';
 FLUSH PRIVILEGES;
 EOF
 
 sudo mysql < configure.sql
 
+# Install Jira Software:
 #In The root user
 
 wget https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-software-8.20.15-x64.bin
@@ -47,7 +48,8 @@ ufw allow 8080
 ufw enable
 ufw status
 wget https://dev.mysql.com/get/archives/mysql-connector-java-8.0/mysql-connector-java-8.0.30.zip
-unzip mysql-connector-java-8.0.30.zip ( "apt install unzip" -  if you don't have it installed)
+apt install unzip -y
+unzip mysql-connector-java-8.0.30.zip 
 
 #Next, navigate into the  mysql-connector-java directory and copy the jar file to the path /opt/atlassian/jira/lib
 cd mysql-connector-java-8.0.30/
