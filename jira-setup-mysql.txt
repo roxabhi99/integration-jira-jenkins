@@ -22,12 +22,15 @@ systemctl status mysql
 #Create DataBase & Install Jira Software:
 
 mysql -u root -p
+cat > configure.sql <<-EOF
 
 CREATE DATABASE jira_db;
 CREATE USER 'jira_user'@'localhost' IDENTIFIED BY 'Nitish@11';
 GRANT ALL PRIVILEGES ON jira_db.* TO 'jira_user'@'localhost';
 FLUSH PRIVILEGES;
-exit;
+EOF
+
+mysql < configure.sql
 
 #In The root user
 
