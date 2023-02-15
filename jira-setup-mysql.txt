@@ -4,8 +4,9 @@ Install java-openjdk:
 $ sudo su -
 
 # apt update -y
-# java -version
+# apt-get install openjdk-11-jdk -y
 # javac -version
+
 
 Install Mysql:
 
